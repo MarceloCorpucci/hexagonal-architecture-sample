@@ -1,35 +1,28 @@
 package hexagonal.architecture.sample.core.webmanager;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+
 import cucumber.api.java.en.Given;
-import hexagonal.architecture.sample.core.WebUIManager;
+import hexagonal.architecture.sample.domain.core.WebUIManager;
 
 public class WebUIManagerGlueCode {
-	private WebUIManager webManager;
-	
-	@Given("Web UI Manager implements TestManager.")
-	public void web_UI_Manager_implements_TestManager() {
-	}
 
-	@Given("So that its main behavior should be shared with other Managers.")
-	public void so_that_its_main_behavior_should_be_shared_with_other_Managers() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
+	@Given("WebUIManager class implements SUTManager.")
+	public void webuimanager_class_implements_SUTManager() {
+		assertThat(WebUIManager.class.getInterfaces()[0].getName(), equalTo("hexagonal.architecture.sample.domain.core.SUTManager"));
 	}
 	
-	@Given("Core capabilities are used to contain WebDriver.")
-	public void core_capabilities_are_used_to_contain_WebDriver() {
-		webManager = new WebUIManager();
-	}
-
-	@Given("WebDriver object is wrapped with WebUIManager.")
-	public void webdriver_object_is_wrapper_with_WebUIManager() {
-		webManager.useBrowser("Chrome");
-	}
-
-	@Given("WebUIManager exposes basic WebDriver functionality.")
-	public void webuimanager_exposes_basic_WebDriver_functionality() {
-		webManager.openUrl("http://www.google.com");
-		webManager.closeWindow();
+	@Given("WebUIManager is an object intended to be a wrapper of WebDriver.")
+	public void webuimanager_is_an_object_intended_to_be_a_wrapper_of_WebDriver() throws NoSuchFieldException, SecurityException {
+		String wrappedWebDriver = WebUIManager.class.getDeclaredField("driver").getType().toString();
+		assertThat(wrappedWebDriver,equalTo("interface org.openqa.selenium.WebDriver"));
 	}
 	
+	@Given("WebUIManager needs to receive a browser type before starting a new one.")
+	public void webuimanager_needs_to_receive_a_browser_type_before_starting_a_new_one() throws NoSuchMethodException, SecurityException {
+		assertThat(WebUIManager.class.getMethod("useApplication",String.class).getName(), is("useApplication"));
+	}
+
 }
