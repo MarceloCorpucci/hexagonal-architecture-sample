@@ -1,6 +1,7 @@
 package hexagonal.architecture.sample.glue.core;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.equalTo;
 
 import cucumber.api.java.en.Given;
@@ -15,10 +16,17 @@ public class BoundariesGlueCode {
 					equalTo("useApplication"));
 	}
 	
-	@Given("SUTClient is in charge of wrapping different types of actions which make possible to connect all test cases to a SUT.")
-	public void sutclient_is_in_charge_of_wrapping_different_types_of_actions_which_make_possible_to_connect_all_test_cases_to_a_SUT()
-																							throws NoSuchMethodException, SecurityException {
-		assertThat(SUTClient.class.getMethod("open", String.class).getName(), 
-				equalTo("open"));
+	@Given("It contains the {string} method definition, which accepts a string as parameter representing the path.")
+	public void it_contains_the_method_definition_which_accepts_a_string_as_parameter_representing_the_path(String methodName)
+											throws NoSuchMethodException, SecurityException {
+		assertThat(SUTClient.class.getMethod(methodName, String.class).toString(),
+				   endsWith("open(java.lang.String)"));
+	}
+	
+	@Given("It contains the {string} method definition.")
+	public void it_contains_the_method_definition(String methodName)
+											throws NoSuchMethodException, SecurityException {
+		assertThat(SUTClient.class.getMethod(methodName).toString(),
+				   endsWith("close()"));
 	}
 }

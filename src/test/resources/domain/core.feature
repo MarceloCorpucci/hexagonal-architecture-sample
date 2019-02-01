@@ -8,3 +8,7 @@ Feature: Domain Layer - Core
 	Scenario: ChromeClient responsibility
 		* Implements SUTClients.
 		* Is a wrapper of a ChromeDriver object.
+		
+	Scenario: ChromeClient actions
+		* It opens an url through the "open" method.
+		* It closes the browser through the "close" method. 

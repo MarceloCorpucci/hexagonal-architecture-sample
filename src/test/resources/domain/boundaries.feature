@@ -5,4 +5,5 @@ Feature: Domain Layer Boundary
 		* SUTManager is in charge of defining the SUTClient to be employed according to the application type.
 		
 	Scenario: SUTClient responsibility
-		* SUTClient is in charge of wrapping different types of actions which make possible to connect all test cases to a SUT. 
+		* It contains the "open" method definition, which accepts a string as parameter representing the path.
+		* It contains the "close" method definition. 

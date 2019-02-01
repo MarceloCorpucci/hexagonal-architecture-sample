@@ -7,10 +7,17 @@ import cucumber.api.java.en.Given;
 import hexagonal.architecture.sample.application.WebPort;
 
 public class PortsGlueCode {
+	@Given("It contains the method {string}, accepts a string and returns a SUTClient.")
+	public void it_contains_the_method_accepts_a_string_and_returns_a_SUTClient(String methodName)										
+											throws NoSuchMethodException, SecurityException {
+		assertThat(WebPort.class.getMethod(methodName, String.class).getReturnType().toString(), 
+				   is("interface hexagonal.architecture.sample.domain.boundary.SUTClient"));
+	}
+	
 	@Given("It contains the method {string}, and it returns a SUTClient.")
 	public void it_contains_the_method_and_it_returns_a_SUTClient(String methodName) 
 											throws NoSuchMethodException, SecurityException {
-		assertThat(WebPort.class.getMethod(methodName,String.class).getReturnType().toString(), 
+		assertThat(WebPort.class.getMethod(methodName).getReturnType().toString(), 
 				   is("interface hexagonal.architecture.sample.domain.boundary.SUTClient"));
 	}
 }

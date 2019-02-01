@@ -4,4 +4,5 @@ import hexagonal.architecture.sample.domain.boundary.SUTClient;
 
 public interface WebPort {
 	SUTClient open(String url);
+	SUTClient close();
 }

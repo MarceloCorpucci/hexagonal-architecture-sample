@@ -13,6 +13,9 @@ public class AdaptersGlueCode {
 				   equalTo("hexagonal.architecture.sample.application.WebPort"));
 	}
 	
-	// * It contains the method "open", and it returns a SUTClient.
+	// * It contains the method "open", accepts a string and returns a SUTClient.
+	// implemented in PortsGlueCode.java
+	
+	// * It contains the method "close", and it returns a SUTClient.
 	// implemented in PortsGlueCode.java
 }

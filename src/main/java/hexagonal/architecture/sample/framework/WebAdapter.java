@@ -15,4 +15,9 @@ public class WebAdapter implements WebPort {
 		return sutClient.open(url);
 	}
 
+	@Override
+	public SUTClient close() {
+		return sutClient.close();
+	}
+
 }

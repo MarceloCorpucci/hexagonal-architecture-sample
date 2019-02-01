@@ -19,4 +19,11 @@ public class ChromeClient implements SUTClient {
 		return this;
 	}
 
+	@Override
+	public SUTClient close() {
+		driver.close();
+		return this;
+	}
+
+	
 }
