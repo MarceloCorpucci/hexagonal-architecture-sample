@@ -1,11 +1,10 @@
 @wip
 Feature: Domain Layer - Core 
 
-	Scenario: WebUIManager is a SUTManager implementation
-		* WebUIManager class implements SUTManager.
-
-	Scenario: WebUIManager object definition
-		* WebUIManager is an object intended to be a wrapper of WebDriver.
+	Scenario: WebManager is a SUTManager implementation
+		* Implements SUTManager.
+		* It is in charge of returning a concrete SUTClient according to the application type received.
 		
-	Scenario: WebUIManager browser handling 
-		* WebUIManager needs to receive a browser type before starting a new one.
+	Scenario: ChromeClient responsibility
+		* Implements SUTClients.
+		* Is a wrapper of a ChromeDriver object.

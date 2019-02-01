@@ -6,7 +6,7 @@
 
 	<groupId>hexagonal.architecture.sample</groupId>
 	<artifactId>hexagonal-architecture-sample</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.1</version>
 
 	<name>hexagonal-architecture-sample</name>
 	<!-- FIXME change it to the project's website -->
