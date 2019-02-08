@@ -11,4 +11,5 @@ Feature: Domain Layer - Core
 		
 	Scenario: ChromeClient actions
 		* It opens an url through the "open" method.
-		* It closes the browser through the "close" method. 
+		* It closes the browser through the "close" method.
+		* It enters text into text fields through the "addText" method.

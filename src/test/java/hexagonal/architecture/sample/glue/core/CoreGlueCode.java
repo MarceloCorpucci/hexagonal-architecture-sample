@@ -51,4 +51,11 @@ public class CoreGlueCode {
 		assertThat(ChromeClient.class.getMethod(methodName).toString(),
 				   endsWith("close()"));
 	}
+	
+	@Given("It enters text into text fields through the {string} method.")
+	public void it_enters_text_into_text_fields_through_the_method(String methodName)
+											throws NoSuchMethodException {
+		assertThat(ChromeClient.class.getMethod(methodName, String.class).toString(),
+				   endsWith("addText(java.lang.String)"));
+	}
 }

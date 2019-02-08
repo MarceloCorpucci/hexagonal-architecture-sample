@@ -29,4 +29,28 @@ public class BoundariesGlueCode {
 		assertThat(SUTClient.class.getMethod(methodName).toString(),
 				   endsWith("close()"));
 	}
+	
+	@Given("It contains the {string} method definition, which accepts a string parameter representing the slice to be found.")
+	public void it_contains_the_method_definition_which_accepts_a_string_parameter_representing_the_slice_to_be_found(String methodName)
+											throws NoSuchMethodException, SecurityException {
+		//assertThat(SUTClient.class.getMethod(methodName, SUTSlicePoint.class).toString(),
+		//		   endsWith("on(hexagonal.architecture.sample.domain.boundary.SUTSlicePoint"));
+	}
+
+	@Given("It contains the {string} method definition, which accepts a string parameter representing the text to be added into the text field.")
+	public void it_contains_the_method_definition_which_accepts_a_string_parameter_representing_the_text_to_be_added_into_the_text_field(String methodName)
+			throws NoSuchMethodException, SecurityException {
+		assertThat(SUTClient.class.getMethod(methodName, String.class).toString(),
+				endsWith("addText(java.lang.String)"));
+	}
+	
+	@Given("It is a wrapper of a WebElement, part of the WebDriver API.")
+	public void it_is_a_wrapper_of_a_WebElement_part_of_the_WebDriver_API() {
+		
+	}
+	
+	@Given("It is a wrapper of a By class, part of the WebDriver API.")
+	public void it_is_a_wrapper_of_a_By_class_part_of_the_WebDriver_API() {
+	}
+	
 }
