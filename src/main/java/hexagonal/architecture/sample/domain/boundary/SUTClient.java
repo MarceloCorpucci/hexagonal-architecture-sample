@@ -6,4 +6,5 @@ public interface SUTClient {
 	Object utilizeClient();
 	SUTClient getSUTSlice(SUTSlice sutSlicePoint);
 	SUTClient addText(String text);
+	SUTClient select();
 }

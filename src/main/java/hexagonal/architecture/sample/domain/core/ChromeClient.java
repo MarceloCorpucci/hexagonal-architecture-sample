@@ -47,6 +47,11 @@ public class ChromeClient implements SUTClient {
 		return this;
 	}
 
-
+	@Override
+	public SUTClient select() {
+		element = (WebElement)webSlicePoint.getSlice();
+		element.click();
+		return this;
+	}
 	
 }

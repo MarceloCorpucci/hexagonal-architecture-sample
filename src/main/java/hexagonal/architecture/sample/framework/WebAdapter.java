@@ -44,4 +44,9 @@ public class WebAdapter implements WebPort {
 		this.sutClient.getSUTSlice(webSlicePort.getFoundSlice());
 		return this;
 	}
+
+	@Override
+	public SUTClient select() {
+		return this.sutClient.select();
+	}
 }

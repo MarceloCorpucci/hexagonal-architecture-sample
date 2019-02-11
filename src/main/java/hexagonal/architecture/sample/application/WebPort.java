@@ -7,4 +7,5 @@ public interface WebPort {
 	SUTClient close();
 	WebPort then();
 	SUTClient addText(String text);
+	SUTClient select();
 }
