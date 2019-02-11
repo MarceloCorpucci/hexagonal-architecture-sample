@@ -1,6 +1,8 @@
 package hexagonal.architecture.sample.domain.boundary;
 
 public interface SUTSlice {
-	public SUTSlice usingId(String id);
-	public SUTSlice usingXpath(String xpath);
+	public void setSUTClient(SUTClient sutClient);
+	public void whichRepresents(String criteria);
+	public Object getSlice();
+	public SUTSlice search(String definedObject);
 }

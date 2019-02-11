@@ -3,7 +3,6 @@ package hexagonal.architecture.sample.framework;
 import hexagonal.architecture.sample.application.WebPort;
 import hexagonal.architecture.sample.application.WebSlicePort;
 import hexagonal.architecture.sample.domain.boundary.SUTClient;
-import hexagonal.architecture.sample.domain.boundary.SUTSlice;
 
 public class WebAdapter implements WebPort {
 	private WebSlicePort webSlicePort;
@@ -11,6 +10,7 @@ public class WebAdapter implements WebPort {
 	
 	public WebAdapter(SUTClient sutClient) {
 		this.sutClient = sutClient;
+		this.webSlicePort = new WebSliceAdapter();
 	}
 	
 	@Override
@@ -24,13 +24,24 @@ public class WebAdapter implements WebPort {
 	}
 
 	@Override
-	public SUTClient on(SUTSlice slicePoint) {
-		return sutClient.on(slicePoint);
-	}
-
-	@Override
 	public SUTClient addText(String text) {
 		return sutClient.addText(text);
 	}
+	
+	public WebAdapter search(String definedObject) {
+		webSlicePort.useSUTClient(sutClient)
+					.search(definedObject);
+		return this;
+	}
 
+	public WebAdapter whichRepresents(String criteria) {
+		webSlicePort.whichRepresents(criteria);
+		return this;
+	}
+
+	@Override
+	public WebPort then() {
+		this.sutClient.getSUTSlice(webSlicePort.getFoundSlice());
+		return this;
+	}
 }

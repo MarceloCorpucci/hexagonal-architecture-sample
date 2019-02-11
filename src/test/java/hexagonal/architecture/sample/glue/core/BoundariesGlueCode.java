@@ -48,9 +48,4 @@ public class BoundariesGlueCode {
 	public void it_is_a_wrapper_of_a_WebElement_part_of_the_WebDriver_API() {
 		
 	}
-	
-	@Given("It is a wrapper of a By class, part of the WebDriver API.")
-	public void it_is_a_wrapper_of_a_By_class_part_of_the_WebDriver_API() {
-	}
-	
 }

@@ -1,8 +1,11 @@
 package hexagonal.architecture.sample.application;
 
+import hexagonal.architecture.sample.domain.boundary.SUTClient;
 import hexagonal.architecture.sample.domain.boundary.SUTSlice;
 
 public interface WebSlicePort {
-	public SUTSlice usingId(String id);
-	public SUTSlice usingXpath(String xpath);
+	public WebSlicePort useSUTClient(SUTClient sutClient);
+	public void search(String definedObject);
+	public void whichRepresents(String criteria);
+	public SUTSlice getFoundSlice();
 }

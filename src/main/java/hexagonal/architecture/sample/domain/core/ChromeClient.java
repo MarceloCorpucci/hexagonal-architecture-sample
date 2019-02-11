@@ -1,6 +1,5 @@
 package hexagonal.architecture.sample.domain.core;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,10 +9,11 @@ import hexagonal.architecture.sample.domain.boundary.SUTSlice;
 
 public class ChromeClient implements SUTClient {
 	private WebDriver driver;
-	private SUTSlice slicePoint;
+	private SUTSlice webSlicePoint;
+	private WebElement element;
 	
 	public ChromeClient() {
-		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "/Users/marcelocorpucci/Chromedriver/chromedriver");
 		driver = new ChromeDriver();
 	}
 	
@@ -29,23 +29,24 @@ public class ChromeClient implements SUTClient {
 		return this;
 	}
 
-//	@Override
-//	public SUTSlice takeSlice(SUTSlicePoint slicePoint) {
-//		return new SUTSlice().driver.findElement(slicePoint);
-//	}
+	@Override
+	public Object utilizeClient() {
+		return this.driver;
+	}
 
 	@Override
-	public SUTClient on(SUTSlice slicePoint) {
-		By by = (By)slicePoint;
-		slicePoint = (SUTSlice)driver.findElement(by);
+	public SUTClient getSUTSlice(SUTSlice sutSlice) {
+		this.webSlicePoint = sutSlice;
 		return this;
 	}
 
 	@Override
 	public SUTClient addText(String text) {
-		WebElement element = (WebElement)slicePoint;
+		element = (WebElement)webSlicePoint.getSlice();
 		element.sendKeys(text);
 		return this;
 	}
+
+
 	
 }
