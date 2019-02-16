@@ -4,7 +4,10 @@ public interface SUTClient {
 	SUTClient open(String path);
 	SUTClient close();
 	Object utilizeClient();
-	SUTClient getSUTSlice(SUTSlice sutSlicePoint);
+	SUTClient setSUTSlice(SUTSlice sutSlice);
+	SUTClient waitUntilSliceAvailable(String location);
+	SUTClient waitUntilSUTLocationIsReady(String location);
+	String getSUTLocation();
 	SUTClient addText(String text);
 	SUTClient select();
 }

@@ -5,7 +5,8 @@ import hexagonal.architecture.sample.domain.boundary.SUTSlice;
 
 public interface WebSlicePort {
 	public WebSlicePort useSUTClient(SUTClient sutClient);
-	public void search(String definedObject);
+	public SUTSlice definePoint(String point);
+	public String usePoint();
 	public void whichRepresents(String criteria);
 	public SUTSlice getFoundSlice();
 }

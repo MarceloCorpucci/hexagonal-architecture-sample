@@ -7,17 +7,22 @@ import hexagonal.architecture.sample.domain.core.WebSlice;
 
 public class WebSliceAdapter implements WebSlicePort {
 	private SUTClient sutClient;
-	private SUTSlice webSlicePoint = new WebSlice();
-
+	private SUTSlice webSlice = new WebSlice();
+	
 	@Override
-	public void search(String definedObject) {
-		webSlicePoint.search(definedObject);
+	public SUTSlice definePoint(String point) {
+		return this.webSlice.definePoint(point);
 	}
-
+	
+	@Override
+	public String usePoint() {
+		return webSlice.usePoint();
+	}
+	
 	@Override
 	public void whichRepresents(String criteria) {
-		webSlicePoint.setSUTClient(sutClient);
-		webSlicePoint.whichRepresents(criteria);
+		webSlice.setSUTClient(sutClient);
+		webSlice.whichRepresents(criteria);
 	}
 
 	@Override
@@ -28,9 +33,7 @@ public class WebSliceAdapter implements WebSlicePort {
 
 	@Override
 	public SUTSlice getFoundSlice() {
-		return this.webSlicePoint;
+		return this.webSlice;
 	}
-
-
 
 }

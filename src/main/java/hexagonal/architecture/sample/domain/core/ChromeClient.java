@@ -1,15 +1,18 @@
 package hexagonal.architecture.sample.domain.core;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import hexagonal.architecture.sample.domain.boundary.SUTClient;
 import hexagonal.architecture.sample.domain.boundary.SUTSlice;
 
 public class ChromeClient implements SUTClient {
 	private WebDriver driver;
-	private SUTSlice webSlicePoint;
+	private SUTSlice webSlice;
 	private WebElement element;
 	
 	public ChromeClient() {
@@ -35,23 +38,43 @@ public class ChromeClient implements SUTClient {
 	}
 
 	@Override
-	public SUTClient getSUTSlice(SUTSlice sutSlice) {
-		this.webSlicePoint = sutSlice;
+	public SUTClient setSUTSlice(SUTSlice sutSlice) {
+		this.webSlice = sutSlice;
 		return this;
 	}
 
 	@Override
+	public SUTClient waitUntilSliceAvailable(String location) {
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated((By)webSlice.getSlicePoint(location)));
+		return this;
+	}
+
+	@Override
+	public SUTClient waitUntilSUTLocationIsReady(String location) {
+		new WebDriverWait(driver, 10).until(ExpectedConditions.urlToBe(location));
+		return this;
+	}
+	
+	@Override
+	public String getSUTLocation() {
+		return driver.getCurrentUrl();
+	}
+
+	@Override
 	public SUTClient addText(String text) {
-		element = (WebElement)webSlicePoint.getSlice();
+		element = (WebElement)webSlice.getSlice();
 		element.sendKeys(text);
 		return this;
 	}
 
 	@Override
 	public SUTClient select() {
-		element = (WebElement)webSlicePoint.getSlice();
+		element = (WebElement)webSlice.getSlice();
 		element.click();
 		return this;
 	}
+
+
+
 	
 }

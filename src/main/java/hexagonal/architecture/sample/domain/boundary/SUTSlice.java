@@ -4,5 +4,7 @@ public interface SUTSlice {
 	public void setSUTClient(SUTClient sutClient);
 	public void whichRepresents(String criteria);
 	public Object getSlice();
-	public SUTSlice search(String definedObject);
+	public Object getSlicePoint(String location);
+	public SUTSlice definePoint(String point);
+	public String usePoint();
 }
