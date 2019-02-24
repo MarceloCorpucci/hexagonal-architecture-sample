@@ -58,4 +58,11 @@ public class CoreGlueCode {
 		assertThat(ChromeClient.class.getMethod(methodName, String.class).toString(),
 				   endsWith("addText(java.lang.String)"));
 	}
+	
+	@Given("It exposes the wrapped driver as an object through the method {string}.")
+	public void it_exposes_the_wrapped_driver_as_an_object_through_the_method(String methodName)
+											throws NoSuchMethodException {
+		assertThat(ChromeClient.class.getMethod(methodName).toString(),
+				   endsWith(methodName + "()"));
+	}
 }

@@ -13,5 +13,5 @@ Feature: Domain Layer - Core
 		* It opens an url through the "open" method.
 		* It closes the browser through the "close" method.
 		* It enters text into text fields through the "addText" method.
-		# TODO utilizeClient
+		* It exposes the wrapped driver as an object through the method "utilizeClient".
 		# TODO getSUTSlice
