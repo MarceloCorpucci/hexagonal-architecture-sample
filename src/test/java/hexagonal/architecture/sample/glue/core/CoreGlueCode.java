@@ -1,11 +1,12 @@
 package hexagonal.architecture.sample.glue.core;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.endsWith;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 import cucumber.api.java.en.Given;
+import hexagonal.architecture.sample.domain.boundary.SUTSlice;
 import hexagonal.architecture.sample.domain.core.ChromeClient;
 import hexagonal.architecture.sample.domain.core.WebManager;
 
@@ -64,5 +65,13 @@ public class CoreGlueCode {
 											throws NoSuchMethodException {
 		assertThat(ChromeClient.class.getMethod(methodName).toString(),
 				   endsWith(methodName + "()"));
+	}
+	
+
+	@Given("It allows to compose a SUTSlice through the method {string} receiving a SUTSlice as a parameter.")
+	public void it_allows_to_compose_a_SUTSlice_through_the_method_receiving_a_SUTSlice_as_a_parameter(String methodName)
+											throws NoSuchMethodException {
+		assertThat(ChromeClient.class.getMethod(methodName, SUTSlice.class).toString(),
+				   endsWith(methodName + "(hexagonal.architecture.sample.domain.boundary.SUTSlice)"));
 	}
 }

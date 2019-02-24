@@ -14,4 +14,4 @@ Feature: Domain Layer - Core
 		* It closes the browser through the "close" method.
 		* It enters text into text fields through the "addText" method.
 		* It exposes the wrapped driver as an object through the method "utilizeClient".
-		# TODO getSUTSlice
+		* It allows to compose a SUTSlice through the method "setSUTSlice" receiving a SUTSlice as a parameter.
