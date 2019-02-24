@@ -1,4 +1,4 @@
-@wip
+@wip1
 Feature: Domain Layer - Core 
 
 	Scenario: WebManager is a SUTManager implementation

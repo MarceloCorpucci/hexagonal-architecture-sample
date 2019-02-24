@@ -10,8 +10,14 @@ public class WebSliceAdapter implements WebSlicePort {
 	private SUTSlice webSlice = new WebSlice();
 	
 	@Override
-	public SUTSlice definePoint(String point) {
-		return this.webSlice.definePoint(point);
+	public WebSlicePort setSUTClient(SUTClient sutClient) {
+		this.sutClient = sutClient;
+		return this;
+	}
+
+	@Override
+	public SUTSlice identifyPoint(String point) {
+		return this.webSlice.indentifyPoint(point);
 	}
 	
 	@Override
@@ -20,15 +26,10 @@ public class WebSliceAdapter implements WebSlicePort {
 	}
 	
 	@Override
-	public void whichRepresents(String criteria) {
+	public Object whichIsLocatedBy(String criteria) {
 		webSlice.setSUTClient(sutClient);
-		webSlice.whichRepresents(criteria);
-	}
-
-	@Override
-	public WebSlicePort useSUTClient(SUTClient sutClient) {
-		this.sutClient = sutClient;
-		return this;
+		webSlice.whichIsLocatedBy(criteria);
+		return (Object)webSlice;
 	}
 
 	@Override
